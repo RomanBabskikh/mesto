@@ -2,7 +2,7 @@
 
 [Ссылка на макет в Figma](https://www.figma.com/file/StZjf8HnoeLdiXS7dYrLAh/JavaScript.-Sprint-4)
 
-[ссылка на сайт](https://github.com/RomanBabskikh/mesto.git)
+[ссылка на сайт](https://romanbabskikh.github.io/mesto/index.html)
 
 
 
