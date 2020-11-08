@@ -17,14 +17,12 @@
             <img class="profile__avatar" src="./images/image.jpg" alt="Фотография Жак-Ив Кусто">
             <div class="profile__info">
                 <h1 class="profile__name">Жак-Ив Кусто</h1>
-                <button class="profile__button"> 
-                    <img src="./images/button1.png" alt="Кнопка редактирования">
+                <button type="button" class="profile__button"> 
                 </button>
                 <p class="profile__description">Исследователь океана</p>
                  
             </div>
-                 <button class="profile__add-button">
-                     <img src="./images/button2.png" alt="Кнопка добавления">
+                 <button class="profile__add-button">  
                  </button>
             
         </section>
@@ -79,9 +77,24 @@
     <footer class="footer container">
         <p class="footer__copyright">&copy;2020.Роман Бабских</p>
     </footer> 
+    <div class="popup">
+        <div class="popup__container"> 
+            <button class="popup__close" type="button"></button>
+            <h3 class="popup__title">Редактировать профиль</h3>
+        <form class="popup__form">
+            <input class="popup__input popup__input_name" type="text">
+            <span class="popup__e"></span>
+            <input class="popup__input popup__input_info" type="text">
+            <span class="popup__e">
+            </span>
+            <button class="popup__button" type="submit">Сохранить</button>
+        </form>
+
+        </div>
+    </div>
     
 </div>
-<script src="./script.js"></script>
+<script src="./scripts/index.js"></script>
 </body>
      
 

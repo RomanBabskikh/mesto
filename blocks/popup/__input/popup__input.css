@@ -1,0 +1,15 @@
+@import url('./_name/popup__input_name.css');
+@import url('./_info/popup__input_info.css');
+@import url('../__e/popup__e.css');
+
+.popup__input{
+    border: 0;
+    border-bottom: 1px solid #000000;
+    box-sizing: border-box;
+    width: 100%;
+    font-size: 14px;
+    line-height: 17px;
+    padding-left: 0;
+    padding-bottom: 9px;   
+}
+

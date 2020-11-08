@@ -9,17 +9,17 @@
     justify-content: center;
     align-items: center;
     transition: opacity 0.5s linear;
+    outline: none;
+    background-image: url('../../../images/button2.png');
+    background-repeat: no-repeat;
+    background-position: center;
   }
   
   .profile__add-button:first-child {
     width: 22px;
   }
   
-  .profile__add-button:focus {
-    outline: none;
-  }
-  
-  
+    
   .profile__add-button:hover {
     cursor: pointer;
     opacity: 0.6;

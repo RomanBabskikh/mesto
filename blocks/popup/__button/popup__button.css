@@ -1,0 +1,13 @@
+.popup__button{
+    margin-top: 18px;
+    width: 100%;
+    background-color: #000;
+    color: #fff;
+    font-size: 18px;
+    line-height: 22px;
+    min-height: 50px;
+    cursor: pointer;
+    border: 1px solid #000;
+    border-radius: 2px;
+    transition: opacity 0.5s linear;
+}
