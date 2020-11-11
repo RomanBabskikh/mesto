@@ -1,18 +1,20 @@
-@import url('./__container/popup__container.css');
+/* @import url('./__container/popup__container.css');
 @import url('./__close/popup__close.css');
 @import url('./_opened/popup_opened.css');
 @import url('./__title/popup__title.css');
 @import url('./__form/popup__form.css');
-@import url('./__button/popup__button.css');
+@import url('./__button/popup__button.css'); */
 
 .popup{
-position: fixed;
+/* position: fixed; */
+position: absolute;
+margin:auto;
 display: none;
 top: 0;
 bottom: 0;
 left: 0;
 right: 0;
-background-color: rgba(0, 0, 0, 0.15);
+background-color: rgba(0, 0, 0, 0.5);
 align-items: center;
 justify-content: center;
 }

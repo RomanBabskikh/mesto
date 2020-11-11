@@ -1,7 +1,7 @@
-@import url('./__image/element__image.css');
+/* @import url('./__image/element__image.css');
 @import url('./__info/element__info.css');
 @import url('./__button-like/element__button-like.css');
-@import url('./__text/element__text.css');
+@import url('./__text/element__text.css'); */
 
 .element {
 max-width: 282px;
@@ -9,4 +9,4 @@ color: #000;
 background-color: #fff;
 border-radius: 10px;
 overflow: hidden;
-  }
+}

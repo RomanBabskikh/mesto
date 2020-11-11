@@ -1,4 +1,4 @@
-@import url('./__logo/header__logo.css');
+/* @import url('./__logo/header__logo.css'); */
 
 
 
@@ -9,6 +9,4 @@
     padding: 45px 0 36px 0;
     box-sizing: border-box;
     border-bottom: 1px solid rgba(84,84,84,0.7);
-    
-
 }

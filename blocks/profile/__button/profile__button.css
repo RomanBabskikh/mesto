@@ -9,7 +9,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('../../../images/button1.png');
+    background-image: url('../../../images/button1.svg');
     transition: opacity 0.5s linear;
     background-repeat: no-repeat;
     background-position: center;
