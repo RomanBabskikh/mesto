@@ -10,6 +10,8 @@ const infoField = document.querySelector('.popup__input_info');
 
 function showPopup(){
     popup.classList.add('popup_opened');
+    nameField.value = title.textContent;
+    infoField.value = subTitle.textContent;
 }
 
 
