@@ -1,8 +1,11 @@
-const popup = document.querySelector('.popup');
+
+/** ПРоектная работа 4 */
+const popupProfile = document.querySelector('.popup__profile');
 const popupFoto = document.querySelector('.popup__foto');
 const editButton = document.querySelector('.profile__button');
-const editButton2 = document.querySelector('.profile__add-button');
-const popupCloseButton = document.querySelector('.popup__close');
+const editAddButton = document.querySelector('.profile__add-button');
+const popupProfileCloseButton = document.querySelector('.popup__close_profile');
+const popupFotoCloseButton = document.querySelector('.popup__close_foto');
 const title = document.querySelector('.profile__name');
 const subTitle = document.querySelector('.profile__description');
 const form = document.querySelector('.popup__form');
@@ -10,34 +13,28 @@ const nameField = document.querySelector('.popup__input_name');
 const infoField = document.querySelector('.popup__input_info');
 
 //функция по открытию попапа//
-function showPopup(){
-    popup.classList.add('popup_opened');
+function showPopupProfile(){
+    popupProfile.classList.add('popup_opened');
     nameField.value = title.textContent;
     infoField.value = subTitle.textContent;
 }
-editButton.addEventListener('click' , showPopup);
+editButton.addEventListener('click' , showPopupProfile);
 
 
 //функция по открытию попапа 2//
 function showPopupFoto(){
     popupFoto.classList.add('popup_opened');
 }
-editButton2.addEventListener('click' , showPopupFoto);
+editAddButton.addEventListener('click' , showPopupFoto);
 
 
 //функция по закрытию попапа//
 function closePopup(){
-    popup.classList.remove('popup_opened');
+    let openedPopup = document.querySelector('.popup_opened');
+    openedPopup.classList.remove('popup_opened');
 }
-popupCloseButton.addEventListener('click' , closePopup);
-
-//функция по закрытию попапа 2//
-function closePopupFoto(){
-    popupFoto.classList.remove('popup_opened');
-}
-popupFotoCloseButton.addEventListener('click' , closePopupFoto);
-
-
+popupProfileCloseButton.addEventListener('click' , closePopup);
+popupFotoCloseButton.addEventListener('click' , closePopup);
 
 
 
@@ -50,6 +47,90 @@ function submitForm(event){
 }
 
 form.addEventListener('submit', submitForm)
+
+/** Конец */
+
+
+/** Проектная работа 5 */
+
+
+const placeList = document.querySelector('.elements');
+const initialCards = [
+  {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+];
+
+// функция которая вставляет карточку в html
+function insertCard(name, link){
+  placeList.insertAdjacentHTML('afterbegin' , `<div class="element">
+    <img class="element__image" src="${link}" alt="${name}">
+    <div class="element__info">
+        <h2 class="element__text">${name}</h2>
+        <button type="button" class="element__button-like"></button>
+    </div>
+</div>`)
+
+}
+
+
+
+
+//Для каждого элемента массива initialCards делаем вставку в блок elements
+function drawCards(){
+for (let i=0;i<initialCards.length;i++){
+  insertCard(initialCards[i].name, initialCards[i].link);
+
+}
+
+}
+window.addEventListener('DOMContentLoaded' , drawCards);
+
+//Добавляем карточку и закрываем попап по отправке карточки
+const fotoInputNAme = document.querySelector('.popup__foto_input-name');
+const fotoInputLink = document.querySelector('.popup__foto_input-link'); 
+const fotoForm = document.querySelector('.popup__foto_form');
+
+function addCards(event){
+  event.preventDefault();
+  insertCard(fotoInputNAme.value,fotoInputLink.value);
+  closePopup();
+}
+fotoForm.addEventListener('submit' , addCards);
+
+//ставим лайк  
+// const buttonLike = document.querySelector('.element__button-like');//выцепили нашу кнопку лайк 
+// buttonLike.addEventListener('click' , function like(event){              //вешаем на нее событие-"нажатие"(даем функцию)
+// clicklike.classList.add('.element__button-clicklike');//передаём обработчику колбэк, добавляющий и снимающий сердечку нужный класс.
+// clicklike.addEventListener('click' , like);
+//   })                      
+ 
+
+
+
+
+
 
 
 

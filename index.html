@@ -25,56 +25,56 @@
         </section>
         
          <section class="elements">
-           <div class="element">
+           <!-- <div class="element">
                 <img class="element__image" src="./images/токио1.jpg" alt="Токио">
                 <div class="element__info">
                     <h2 class="element__text">Токио</h2>
-                    <button type="button" class="element__button-like"></button>
+                    <button type="button" class="element__button-like element__button-clicklike"></button>
                 </div>
             </div>
            <div class="element">
                 <img class="element__image" src="./images/бангкок.jpg" alt="Бангкок">
                 <div class="element__info">
                     <h2 class="element__text">Бангкок</h2>
-                    <button type="button" class="element__button-like"></button>
+                    <button type="button" class="element__button-like element__button-clicklike"></button>
                 </div>
             </div>
             <div class="element">
                 <img class="element__image" src="./images/сингапур.jpg" alt="Сингаур">
                 <div class="element__info">
                     <h2 class="element__text">Сингапур</h2>
-                    <button type="button" class="element__button-like"></button>
+                    <button type="button" class="element__button-like element__button-clicklike"></button>
                 </div>
             </div>
             <div class="element">
                 <img class="element__image" src="./images/багдад.jpg" alt="Багдад">
                 <div class="element__info">
                     <h2 class="element__text">Багдад</h2>
-                    <button type="button" class="element__button-like"></button>
+                    <button type="button" class="element__button-like element__button-clicklike"></button>
                 </div>
             </div>
             <div class="element">
                 <img class="element__image" src="./images/шанхай.jpg" alt="Шанхай">
                 <div class="element__info">
                     <h2 class="element__text">Шанхай</h2>
-                    <button type="button" class="element__button-like"></button>
+                    <button type="button" class="element__button-like element__button-clicklike"></button>
                 </div>
             </div>
             <div class="element">
                 <img class="element__image" src="./images/пекин.jpg" alt="Пекин">
                 <div class="element__info">
                     <h2 class="element__text">Пекин</h2>
-                    <button type="button" class="element__button-like"></button>
+                    <button type="button" class="element__button-like element__button-clicklike"></button>
                 </div>
-            </div>
+            </div> -->
         </section>
     </main>
     <footer class="footer container">
         <p class="footer__copyright">&copy;2020.Роман Бабских</p>
     </footer> 
-    <div class="popup">
+    <div class="popup popup__profile">
         <div class="popup__container"> 
-            <button class="popup__close" type="button"></button>
+            <button class="popup__close popup__close_profile" type="button"></button>
             <h3 class="popup__title">Редактировать профиль</h3>
             <form class="popup__form">
             <input class="popup__input popup__input_name" type="text">
@@ -85,13 +85,13 @@
         </div>
     </div>
 
-    <div class="popup__foto">
+    <div class="popup popup__foto">
         <div class="popup__container"> 
-            <button class="popup__close" type="button"></button>
+            <button class="popup__close popup__close_foto" type="button"></button>
             <h3 class="popup__title">Новое место</h3>
-            <form class="popup__form">
-            <input class="popup__input popup__input_name" type="text">
-            <input class="popup__input popup__input_info" type="text">
+            <form class="popup__form popup__foto_form">
+            <input class="popup__input popup__input_name popup__foto_input-name" type="text" placeholder="Название">
+            <input class="popup__input popup__input_info popup__foto_input-link" type="url" placeholder="Ссылка на картинку">
             <button class="popup__button" type="submit">Сохранить</button>
             </form>
 
