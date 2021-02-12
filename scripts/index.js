@@ -82,27 +82,49 @@ const initialCards = [
   }
 ];
 
-// функция которая вставляет карточку в html
-// function insertCard(name, link){
-//   placeList.insertAdjacentHTML('afterbegin' , `<div class="element">
-//     <img class="element__image" src="${link}" alt="${name}">
-//     <div class="element__info">
-//         <h2 class="element__text">${name}</h2>
-//         <button type="button" class="element__button-like"></button>
-//     </div>
-// </div>`)
 
-// }
 
 function insertCard(name, link) {
   const cardTemplate = document.querySelector('#element-template').content;
   const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
-  cardElement.querySelector('.element__image').src=link;
+  // получить элемент картинку из карточки
+  // начало
+  const image = cardElement.querySelector('.element__image');
+  image.src = link;
+  image.addEventListener('click' , function(evt){
+    const popupImageTemplate = document.querySelector('#image-template').content;
+    const popupImageElement = popupImageTemplate.querySelector('.popup_opened').cloneNode(true);
+    const popupOpenedImageElement = popupImageElement.querySelector('.popup__image');
+    popupOpenedImageElement.src = evt.target.src;
+    popupOpenedImageElement.alt = evt.target.alt;
+    placeList.append(popupImageElement);
+    const closeImagePopupButton = popupImageElement.querySelector('.popup__close');
+    closeImagePopupButton.addEventListener('click' , function(evt){
+      popupImageElement.remove();
+    })
+  })
+  // конец
+  //cardElement.querySelector('.element__image').src=link;
   cardElement.querySelector('.element__text').textContent = name;
+  //добавлние лайка
   cardElement.querySelector('.element__button-like').addEventListener('click', function (evt){
     evt.target.classList.toggle('element__button-like-active');
   })
+
+  //удаление карточки
+  const deleteButton = cardElement.querySelector('.element__button-delete');
+  deleteButton.addEventListener('click', function (evt){
+  // удаление ближайшего ээлемента с классом element
+  //  const cardToRemove = deleteButton.closest('.element');
+  //  cardToRemove.remove();
+  // удаление карточки
+  cardElement.remove();
+  })
+
+  //
   placeList.prepend(cardElement);
+
+  
   
 }
 
@@ -130,4 +152,6 @@ function addCards(event){
   closePopup();
 }
 fotoForm.addEventListener('submit' , addCards);
+
+
 
