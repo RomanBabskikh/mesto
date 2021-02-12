@@ -53,7 +53,7 @@ form.addEventListener('submit', submitForm)
 
 /** Проектная работа 5 */
 
-
+//обьявили переменную 
 const placeList = document.querySelector('.elements');
 const initialCards = [
   {
@@ -83,31 +83,35 @@ const initialCards = [
 ];
 
 
-
+// функция по отрисовке карточки
 function insertCard(name, link) {
-  const cardTemplate = document.querySelector('#element-template').content;
-  const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
+  const cardTemplate = document.querySelector('#element-template').content; // получаем template
+  const cardElement = cardTemplate.querySelector('.element').cloneNode(true); // из шаблона содаем элемент
   // получить элемент картинку из карточки
   // начало
-  const image = cardElement.querySelector('.element__image');
-  image.src = link;
-  image.addEventListener('click' , function(evt){
-    const popupImageTemplate = document.querySelector('#image-template').content;
-    const popupImageElement = popupImageTemplate.querySelector('.popup_opened').cloneNode(true);
-    const popupOpenedImageElement = popupImageElement.querySelector('.popup__image');
-    popupOpenedImageElement.src = evt.target.src;
-    popupOpenedImageElement.alt = evt.target.alt;
-    placeList.append(popupImageElement);
-    const closeImagePopupButton = popupImageElement.querySelector('.popup__close');
+  const image = cardElement.querySelector('.element__image'); // получаем картинку
+  image.src = link; // у эелемента картинки присваиваем свойсту src значение из переменной link
+  image.alt = name; // у элемента картинки присваиваем свойству alt значение из переменной name 
+  // навешиваем слушатель для клика
+  image.addEventListener('click' , function(evt){ 
+    const popupImageTemplate = document.querySelector('#image-template').content;// получаем шаблон попапа
+    const popupImageElement = popupImageTemplate.querySelector('.popup_opened').cloneNode(true);// из шаблона создаем элемент
+    const popupOpenedImageElement = popupImageElement.querySelector('.popup__image');// получаем снова картинку БОЛЬШУЮ(попапа)
+    popupOpenedImageElement.src = evt.target.src; // присваиваем  свойсту src элемента попапа значение из элемента который был передан внутри event 
+    popupOpenedImageElement.alt = evt.target.alt; // тоже самое что выше,только с alt
+    placeList.append(popupImageElement); // добавляме попап в в конец секции elements 
+    const closeImagePopupButton = popupImageElement.querySelector('.popup__close'); // получаем кнопку закрытия попапа
+    // навешивам слушатель для клика  и в функции удаляем элемент попап
     closeImagePopupButton.addEventListener('click' , function(evt){
       popupImageElement.remove();
     })
   })
   // конец
-  //cardElement.querySelector('.element__image').src=link;
-  cardElement.querySelector('.element__text').textContent = name;
+
+  cardElement.querySelector('.element__text').textContent = name; // получаем элемент и свойству элемента присваиваем значение из переменной name
   //добавлние лайка
-  cardElement.querySelector('.element__button-like').addEventListener('click', function (evt){
+  const buttonLikeElement = cardElement.querySelector('.element__button-like') // получили элемент(кнопку лайк)
+  buttonLikeElement.addEventListener('click', function (evt){ // навесили слушателя на клик ,при помощи удалени/добавления стиля
     evt.target.classList.toggle('element__button-like-active');
   })
 
