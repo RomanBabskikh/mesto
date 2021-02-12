@@ -83,15 +83,27 @@ const initialCards = [
 ];
 
 // функция которая вставляет карточку в html
-function insertCard(name, link){
-  placeList.insertAdjacentHTML('afterbegin' , `<div class="element">
-    <img class="element__image" src="${link}" alt="${name}">
-    <div class="element__info">
-        <h2 class="element__text">${name}</h2>
-        <button type="button" class="element__button-like"></button>
-    </div>
-</div>`)
+// function insertCard(name, link){
+//   placeList.insertAdjacentHTML('afterbegin' , `<div class="element">
+//     <img class="element__image" src="${link}" alt="${name}">
+//     <div class="element__info">
+//         <h2 class="element__text">${name}</h2>
+//         <button type="button" class="element__button-like"></button>
+//     </div>
+// </div>`)
 
+// }
+
+function insertCard(name, link) {
+  const cardTemplate = document.querySelector('#element-template').content;
+  const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
+  cardElement.querySelector('.element__image').src=link;
+  cardElement.querySelector('.element__text').textContent = name;
+  cardElement.querySelector('.element__button-like').addEventListener('click', function (evt){
+    evt.target.classList.toggle('element__button-like-active');
+  })
+  placeList.prepend(cardElement);/
+  
 }
 
 
@@ -118,22 +130,4 @@ function addCards(event){
   closePopup();
 }
 fotoForm.addEventListener('submit' , addCards);
-
-//ставим лайк  
-// const buttonLike = document.querySelector('.element__button-like');//выцепили нашу кнопку лайк 
-// buttonLike.addEventListener('click' , function like(event){              //вешаем на нее событие-"нажатие"(даем функцию)
-// clicklike.classList.add('.element__button-clicklike');//передаём обработчику колбэк, добавляющий и снимающий сердечку нужный класс.
-// clicklike.addEventListener('click' , like);
-//   })                      
- 
-
-
-
-
-
-
-
-
-
-
 
