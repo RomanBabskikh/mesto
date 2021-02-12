@@ -102,7 +102,7 @@ function insertCard(name, link) {
   cardElement.querySelector('.element__button-like').addEventListener('click', function (evt){
     evt.target.classList.toggle('element__button-like-active');
   })
-  placeList.prepend(cardElement);/
+  placeList.prepend(cardElement);
   
 }
 
