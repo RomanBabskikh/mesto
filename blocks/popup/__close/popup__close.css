@@ -10,6 +10,7 @@
     background-position: center;
     outline: none;
     background-size: inherit;
+    transition: opacity 0.5s linear;
     
 }
 
