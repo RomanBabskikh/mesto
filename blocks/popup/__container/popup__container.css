@@ -4,12 +4,15 @@
     min-height: 330px;
     background-color: #fff;
     border-radius: 10px;
-    position: relative;
+    /* position: relative; */
     box-sizing: border-box;
     padding-top: 34px;
     padding-left: 36px;
     padding-bottom: 37px;
     padding-right: 36px;
-  
-
+    /* transition: top 1.5s, opacity 1.0s; */
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }

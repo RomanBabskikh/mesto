@@ -74,7 +74,7 @@
     <footer class="footer container">
         <p class="footer__copyright">&copy;2020.Роман Бабских</p>
     </footer> 
-    <div class="popup popup__profile">
+    <div class="popup popup_profile">
         <div class="popup__container"> 
             <button class="popup__close popup__close_profile" type="button"></button>
             <h3 class="popup__title">Редактировать профиль</h3>
@@ -87,13 +87,13 @@
         </div>
     </div>
 
-    <div class="popup popup__foto">
+    <div class="popup popup_foto">
         <div class="popup__container"> 
             <button class="popup__close popup__close_foto" type="button"></button>
             <h3 class="popup__title">Новое место</h3>
-            <form class="popup__form popup__foto_form">
-            <input class="popup__input popup__input_name popup__foto_input-name" type="text" placeholder="Название">
-            <input class="popup__input popup__input_info popup__foto_input-link" type="url" placeholder="Ссылка на картинку">
+            <form class="popup__form popup__form_foto">
+            <input class="popup__input popup__input_name popup__input_name_foto" type="text" placeholder="Название">
+            <input class="popup__input popup__input_info popup__input_ink_foto" type="url" placeholder="Ссылка на картинку">
             <button class="popup__button" type="submit">Сохранить</button>
             </form>
 
@@ -102,7 +102,7 @@
     <template id ="element-template">
         <div class="element">
             <button type="button" class="element__button-delete"></button>
-            <img class="element__image" src="" alt="">
+            <img class="element__image" src="#" alt="#">
             <div class="element__info">
                 <h2 class="element__text"></h2>
                 <button type="button" class="element__button-like"></button>
@@ -112,10 +112,11 @@
     </template>
     <template id = "image-template">
         
-        <div class="popup popup_opened"> 
+        <div class="popup"> 
             <div class="popup__container_image">
             <button class="popup__close" type="button"></button>
-            <img class="popup__image" src="" alt="">
+            <img class="popup__image" src="#" alt="#">
+            <p class="popup__container_description"></p>
         </div>
 </div>
 

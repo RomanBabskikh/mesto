@@ -3,4 +3,7 @@
     max-height: 75vh;
     background-color: #fff;
     position: relative;
+    transition-property: opacity, height;
+transition-duration: 1s, 0s;
+transition-delay: 0s, 1s;
 }

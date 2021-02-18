@@ -1,7 +1,7 @@
 
 /** ПРоектная работа 4 */
-const popupProfile = document.querySelector('.popup__profile');
-const popupFoto = document.querySelector('.popup__foto');
+const popupProfile = document.querySelector('.popup_profile');
+const popupFoto = document.querySelector('.popup_foto');
 const editButton = document.querySelector('.profile__button');
 const editAddButton = document.querySelector('.profile__add-button');
 const popupProfileCloseButton = document.querySelector('.popup__close_profile');
@@ -95,17 +95,30 @@ function insertCard(name, link) {
   // навешиваем слушатель для клика
   image.addEventListener('click' , function(evt){ 
     const popupImageTemplate = document.querySelector('#image-template').content;// получаем шаблон попапа
-    const popupImageElement = popupImageTemplate.querySelector('.popup_opened').cloneNode(true);// из шаблона создаем элемент
+    const popupImageElement = popupImageTemplate.querySelector('.popup').cloneNode(true);// из шаблона создаем элемент
     const popupOpenedImageElement = popupImageElement.querySelector('.popup__image');// получаем снова картинку БОЛЬШУЮ(попапа)
     popupOpenedImageElement.src = evt.target.src; // присваиваем  свойсту src элемента попапа значение из элемента который был передан внутри event 
     popupOpenedImageElement.alt = evt.target.alt; // тоже самое что выше,только с alt
+
+/**
+ * найти элемент <p> с классом и в него вставить текст
+ */
+const imageDescriptionElement = popupImageElement.querySelector('.popup__container_description');
+const imageDescriptionText = document.createTextNode(evt.target.alt);
+imageDescriptionElement.append(imageDescriptionText);
+
+
     placeList.append(popupImageElement); // добавляме попап в в конец секции elements 
+    
     const closeImagePopupButton = popupImageElement.querySelector('.popup__close'); // получаем кнопку закрытия попапа
     // навешивам слушатель для клика  и в функции удаляем элемент попап
     closeImagePopupButton.addEventListener('click' , function(evt){
       popupImageElement.remove();
     })
+
+    popupImageElement.classList.add('popup_opened');
   })
+
   // конец
 
   cardElement.querySelector('.element__text').textContent = name; // получаем элемент и свойству элемента присваиваем значение из переменной name
@@ -146,9 +159,9 @@ for (let i=0;i<initialCards.length;i++){
 window.addEventListener('DOMContentLoaded' , drawCards);
 
 //Добавляем карточку и закрываем попап по отправке карточки
-const fotoInputNAme = document.querySelector('.popup__foto_input-name');
-const fotoInputLink = document.querySelector('.popup__foto_input-link'); 
-const fotoForm = document.querySelector('.popup__foto_form');
+const fotoInputNAme = document.querySelector('.popup__input_name_foto');
+const fotoInputLink = document.querySelector('.popup__input_ink_foto'); 
+const fotoForm = document.querySelector('.popup__form_foto');
 
 function addCards(event){
   event.preventDefault();
