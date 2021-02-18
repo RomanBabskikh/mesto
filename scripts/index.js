@@ -139,7 +139,7 @@ imageDescriptionElement.append(imageDescriptionText);
   })
 
   //
-  placeList.prepend(cardElement);
+  placeList.append(cardElement);
 
   
   
