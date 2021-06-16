@@ -19,7 +19,7 @@ function showPopupProfile(){
     // infoField.value = subTitle.textContent;
     const formEl = popupProfile.querySelector('.popup__form');
     console.log(formEl)
-    isFormValid(formEl);
+    isFormValid(formEl)
 }
 editButton.addEventListener('click' , showPopupProfile);
 
