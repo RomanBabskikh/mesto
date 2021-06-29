@@ -18,7 +18,7 @@ function showPopupProfile(){
     nameField.value = title.textContent;
     infoField.value = subTitle.textContent;
     const formEl = popupProfile.querySelector('.popup__form');
-    isFormValid(formEl)
+    // isFormValid(formEl)
 }
 editButton.addEventListener('click' , showPopupProfile);
 
