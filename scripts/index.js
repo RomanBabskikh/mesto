@@ -15,20 +15,19 @@ const infoField = document.querySelector('.popup__input_info');
 //функция по открытию попапа//
 function showPopupProfile(){
     popupProfile.classList.add('popup_opened');
-    // nameField.value = title.textContent;
-    // infoField.value = subTitle.textContent;
+    nameField.value = title.textContent;
+    infoField.value = subTitle.textContent;
     const formEl = popupProfile.querySelector('.popup__form');
-    console.log(formEl)
     isFormValid(formEl)
 }
 editButton.addEventListener('click' , showPopupProfile);
 
 
 //функция по открытию попапа 2//
-function showPopupFoto(){
-    popupFoto.classList.add('popup_opened');
-}
-editAddButton.addEventListener('click' , showPopupFoto);
+// function showPopupFoto(){
+//     popupFoto.classList.add('popup_opened');
+// }
+// editAddButton.addEventListener('click' , showPopupFoto);
 
 
 //функция по закрытию попапа//
