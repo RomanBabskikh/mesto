@@ -1,9 +1,9 @@
-.popup__container_description{
+.popup__container_description {
     font-weight: normal;
     font-size: 12px;
     line-height: 15px;
     color: white;
     position: absolute;
     left: 0;
-    bottom: -35px;   
+    bottom: -35px;
 }
