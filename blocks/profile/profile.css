@@ -1,8 +1,8 @@
 .profile {
     display: grid;
     gap: 30px;
-    grid-template-columns: 120px 1fr minmax(150px, auto);
-    justify-items: start;
+    grid-template-columns: 120px 1fr 1fr;
+    justify-items: end;
     align-items: center;
     color: #fff;
     padding: 41px 0 50px 0;
