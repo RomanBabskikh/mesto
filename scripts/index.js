@@ -73,7 +73,7 @@ const formMesto = document.querySelector('.popup__form_type_mesto');
 
 function submitFormMesto(event) {
     event.preventDefault();
-    console.log(urlField.value, mestoField.value); //работает
+    // console.log(urlField.value, mestoField.value); //работает
     drawCard({ name: mestoField.value, link: urlField.value });
 
     closePopupMesto(); //работает
@@ -87,30 +87,37 @@ formMesto.addEventListener('submit', submitFormMesto);
 
 
 const initialCards = [{
-        name: 'Архыз',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+        name: 'Байкал',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+
     },
     {
-        name: 'Челябинская область',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+        name: 'Холмогорский район',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+
+    },
+    {
+        name: 'Камчатка',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+
     },
     {
         name: 'Иваново',
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
     },
     {
-        name: 'Камчатка',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+        name: 'Челябинская область',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
     },
     {
-        name: 'Холмогорский район',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-        name: 'Байкал',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+        name: 'Архыз',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
     }
 ];
+
+
+
+
 
 
 
@@ -124,7 +131,13 @@ function drawCard(data) { // добавляем карточки с содерж
     const cardElement = elementTemplate.querySelector('.element').cloneNode(true);
 
     cardElement.querySelector('.element__image').src = data.link; //data-информация из массива
-
+    // cardElement.querySelector('.element__image').addEventListener('click', function(event) {
+    //     // showPopupImage;
+    //     event.preventDefault();
+    //     event.target.classList.add('popup_opened');
+    //     console.log(event); //открывем большую картинку
+    // });
+    cardElement.querySelector('.element__image').addEventListener('click', (e) => showPopupImage(data));
     cardElement.querySelector('.element__image').alt = 'Название карртинки';
     cardElement.querySelector('.element__text').textContent = data.name; //data-информация из массива
     cardElement.querySelector('.element__button-like').addEventListener('click', function(event) {
@@ -136,10 +149,42 @@ function drawCard(data) { // добавляем карточки с содерж
         event.target.closest('.element').remove(); //удаление карточки без присвоения переменной
     });
 
-    elements.append(cardElement);
+
+
+    elements.prepend(cardElement);
+
 }
+
 
 
 initialCards.forEach(function(data) { //отрисовываем карточки(перебиранием массива)
     drawCard(data);
 });
+
+
+
+// ФУНКЦИЯ ПОТ ОТКРЫТЫЮ ПОПАП - 3(КАРТИНКА)
+
+const butoonClosePopupImage = document.querySelector('.popup__close_type_image');
+const popupImage = document.querySelector('.popup_type_image');
+
+function showPopupImage(data) {
+
+    const bigPopupImage = document.querySelector('.popup__image');
+    const popupImageText = document.querySelector('.popup__image_text');
+    popupImage.classList.add('popup_opened');
+    bigPopupImage.src = data.link;
+    popupImageText.textContent = data.name;
+
+    butoonClosePopupImage.addEventListener('click', closePopupImage);
+
+}
+
+//функция по закрытию 3 попапа
+
+
+
+function closePopupImage() {
+    // console.log(1);
+    popupImage.classList.remove('popup_opened');
+}
