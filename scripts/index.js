@@ -171,7 +171,7 @@ const popupImage = document.querySelector('.popup_type_image');
 function showPopupImage(data) {
 
     const bigPopupImage = document.querySelector('.popup__image');
-    const popupImageText = document.querySelector('.popup__image_text');
+    const popupImageText = document.querySelector('.popup__image-text');
     popupImage.classList.add('popup_opened');
     bigPopupImage.src = data.link;
     popupImageText.textContent = data.name;
