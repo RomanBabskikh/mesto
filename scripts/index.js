@@ -7,27 +7,38 @@ const subTitle = document.querySelector('.profile__description');
 const form = document.querySelector('.popup__form');
 const nameField = document.querySelector('.popup__input_type_name');
 const infoField = document.querySelector('.popup__input_type_info');
+const popup = document.querySelector('.popup');
 
 
+// функция по открытию всех попапов
+function openPopup(popup) {
+    popup.classList.add('popup_opened');
+}
 
-//функция по открытию попапа//
-function showPopup() {
-    popupProfile.classList.add('popup_opened');
+//функция по запкрытыю всех попапов
+function closePopup(popup) {
+    popup.classList.remove('popup_opened');
+}
+
+
+//функция по открытию попапа/ редактирования/
+function showPopupProfile() {
+    // popupProfile.classList.add('popup_opened');
+    openPopup(popupProfile);
     nameField.value = title.textContent;
     infoField.value = subTitle.textContent;
-
-
 }
-editButton.addEventListener('click', showPopup);
+editButton.addEventListener('click', showPopupProfile);
 
 
 
 
-//функция по закрытию попапа//
-function closePopup() {
-    popupProfile.classList.remove('popup_opened');
+//функция по закрытию попапа редактирования//
+function closePopupProfile() {
+    // popupProfile.classList.remove('popup_opened');
+    closePopup(popupProfile)
 }
-popupProfileCloseButton.addEventListener('click', closePopup);
+popupProfileCloseButton.addEventListener('click', closePopupProfile);
 
 
 
@@ -37,7 +48,7 @@ function submitFormEdit(event) {
     event.preventDefault();
     title.textContent = nameField.value;
     subTitle.textContent = infoField.value;
-    closePopup();
+    closePopup(popupProfile);
 }
 
 form.addEventListener('submit', submitFormEdit)
@@ -52,7 +63,8 @@ const addMesto = document.querySelector('.profile__add-button');
 const popupMestoCloseButton = document.querySelector('.popup__close_type_mesto');
 
 function showPopupMesto() {
-    popupMesto.classList.add('popup_opened');
+    // popupMesto.classList.add('popup_opened');
+    openPopup(popupMesto);
 
 }
 
@@ -62,7 +74,8 @@ addMesto.addEventListener('click', showPopupMesto); // открывает вто
 
 //ЗАКРЫТЫЕ ВТОРОГО ПОПАП
 function closePopupMesto() {
-    popupMesto.classList.remove('popup_opened');
+    // popupMesto.classList.remove('popup_opened');
+    closePopup(popupMesto);
 }
 popupMestoCloseButton.addEventListener('click', closePopupMesto); // закрываем втрой попап
 
@@ -75,8 +88,9 @@ function submitFormMesto(event) {
     event.preventDefault();
     // console.log(urlField.value, mestoField.value); //работает
     drawCard({ name: mestoField.value, link: urlField.value });
+    event.target.reset();
 
-    closePopupMesto(); //работает
+    closePopup(popupMesto); //работает
 }
 formMesto.addEventListener('submit', submitFormMesto);
 
@@ -127,7 +141,16 @@ const elements = document.querySelector('.elements');
 const elementTemplate = document.querySelector('#element-template').content;
 
 
-function drawCard(data) { // добавляем карточки с содержимым
+function drawCard(data) {
+    const cardElement = createCard(data);
+
+
+
+    elements.prepend(cardElement);
+
+}
+
+function createCard(data) {
     const cardElement = elementTemplate.querySelector('.element').cloneNode(true);
 
     cardElement.querySelector('.element__image').src = data.link; //data-информация из массива
@@ -149,10 +172,7 @@ function drawCard(data) { // добавляем карточки с содерж
         event.target.closest('.element').remove(); //удаление карточки без присвоения переменной
     });
 
-
-
-    elements.prepend(cardElement);
-
+    return cardElement;
 }
 
 
@@ -168,23 +188,23 @@ initialCards.forEach(function(data) { //отрисовываем карточк�
 const butoonClosePopupImage = document.querySelector('.popup__close_type_image');
 const popupImage = document.querySelector('.popup_type_image');
 
+
+
+
 function showPopupImage(data) {
 
     const bigPopupImage = document.querySelector('.popup__image');
     const popupImageText = document.querySelector('.popup__image-text');
-    popupImage.classList.add('popup_opened');
+    // popupImage.classList.add('popup_opened');
+    openPopup(popupImage);
     bigPopupImage.src = data.link;
     popupImageText.textContent = data.name;
-
-    butoonClosePopupImage.addEventListener('click', closePopupImage);
-
 }
+butoonClosePopupImage.addEventListener('click', closePopupImage);
 
 //функция по закрытию 3 попапа
-
-
-
 function closePopupImage() {
     // console.log(1);
-    popupImage.classList.remove('popup_opened');
+    // popupImage.classList.remove('popup_opened');
+    closePopup(popupImage);
 }
