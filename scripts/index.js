@@ -7,18 +7,29 @@ const subTitle = document.querySelector('.profile__description');
 const form = document.querySelector('.popup__form');
 const nameField = document.querySelector('.popup__input_type_name');
 const infoField = document.querySelector('.popup__input_type_info');
-const popup = document.querySelector('.popup');
+
+const modalPopups = document.querySelectorAll('.popup')
+
+
+
+
+
 
 
 // функция по открытию всех попапов
 function openPopup(popup) {
     popup.classList.add('popup_opened');
+
 }
 
 //функция по запкрытыю всех попапов
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
+
 }
+
+
+
 
 
 //функция по открытию попапа/ редактирования/
@@ -36,9 +47,30 @@ editButton.addEventListener('click', showPopupProfile);
 //функция по закрытию попапа редактирования//
 function closePopupProfile() {
     // popupProfile.classList.remove('popup_opened');
-    closePopup(popupProfile)
+    closePopup(popupProfile);
+
+
 }
 popupProfileCloseButton.addEventListener('click', closePopupProfile);
+
+
+// закрытие по ескейп 
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape')
+        closePopup(popupProfile)
+});
+
+//закрытие по оверлай 
+
+modalPopups.forEach((popup) => {
+    popup.addEventListener('click', function(evt) {
+        if (evt.target.classList.contains('popup__close') || evt.target.classList.contains('popup')) {
+            closePopup(popup);
+        }
+    });
+})
+
+
 
 
 
@@ -77,7 +109,11 @@ function closePopupMesto() {
     // popupMesto.classList.remove('popup_opened');
     closePopup(popupMesto);
 }
-popupMestoCloseButton.addEventListener('click', closePopupMesto); // закрываем втрой попап
+popupMestoCloseButton.addEventListener('click', closePopupMesto);
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape')
+        closePopup(popupMesto)
+}); // закрываем втрой попап
 
 //ФОРМА ВТОРОГО ПОПАП
 const urlField = document.querySelector('.popup__input_type_url');
@@ -208,3 +244,7 @@ function closePopupImage() {
     // popupImage.classList.remove('popup_opened');
     closePopup(popupImage);
 }
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape')
+        closePopup(popupImage)
+});
