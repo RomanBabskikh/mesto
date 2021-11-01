@@ -1,6 +1,6 @@
-init();
+enableValidation();
 
-function init() {
+function enableValidation() {
     const forms = [...document.querySelectorAll('.popup__form')];
     forms.forEach(addListenersToForm);
 }
