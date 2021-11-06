@@ -42,10 +42,10 @@ const initialCards = [{
 
 
 //функция закрытия попапаов по esc 
-function closeByEsc(evt, popup) {
+function closeByEsc(evt) {
     if (evt.key === ESC_CODE) {
-        //const openedPopup = document.querySelector('.popup_opened');
-        closePopup(popup);
+        const openedPopup = document.querySelector('.popup_opened');
+        closePopup(openedPopup);
     }
 }
 
@@ -54,25 +54,21 @@ function closeByEsc(evt, popup) {
 // функция по открытию всех попапов
 function openPopup(popup) {
     popup.classList.add('popup_opened');
-    document.addEventListener('keydown', (e) => closeByEsc(e, popup));
+    document.addEventListener('keydown', closeByEsc);
 
 }
 
 //функция по запкрытыю всех попапов
 function closePopup(popup) {
     popup.classList.remove('popup_opened');
-    document.removeEventListener('keydown', (e) => closeByEsc(e, popup));
+    document.removeEventListener('keydown', closeByEsc);
 
 }
 
 
 
-
-
-
 //функция по открытию попапа/ редактирования/
 function showPopupProfile() {
-    // popupProfile.classList.add('popup_opened');
     openPopup(popupProfile);
     nameField.value = title.textContent;
     infoField.value = subTitle.textContent;
@@ -84,15 +80,10 @@ editButton.addEventListener('click', showPopupProfile);
 
 //функция по закрытию попапа редактирования//
 function closePopupProfile() {
-    // popupProfile.classList.remove('popup_opened');
     closePopup(popupProfile);
-
-
 }
 popupProfileCloseButton.addEventListener('click', closePopupProfile);
 
-
-// закрытие по ескейп 
 
 
 //закрытие по оверлай 
@@ -104,10 +95,6 @@ modalPopups.forEach((popup) => {
         }
     });
 })
-
-
-
-
 
 
 //функция по форме//
@@ -133,7 +120,6 @@ const mestoField = document.querySelector('.popup__input_type_mesto');
 const formMesto = document.querySelector('.popup__form_type_mesto');
 
 function showPopupMesto() {
-    // popupMesto.classList.add('popup_opened');
     const submitButton = formMesto.querySelector('.popup__button');
     submitButton.disabled = true;
     submitButton.classList.add('popup__button_disabled');
@@ -147,22 +133,15 @@ addMesto.addEventListener('click', showPopupMesto); // открывает вто
 
 //ЗАКРЫТЫЕ ВТОРОГО ПОПАП
 function closePopupMesto() {
-    // popupMesto.classList.remove('popup_opened');
-
     closePopup(popupMesto);
 }
 popupMestoCloseButton.addEventListener('click', closePopupMesto);
-// document.addEventListener('keydown', function(e) {
-//     if (e.key === 'Escape')
-//         closePopup(popupMesto)
-// }); // закрываем втрой попап
 
 //ФОРМА ВТОРОГО ПОПАП
 
 
 function submitFormMesto(event) {
     event.preventDefault();
-    // console.log(urlField.value, mestoField.value); //работает
     drawCard({ name: mestoField.value, link: urlField.value });
     event.target.reset();
 
@@ -174,17 +153,6 @@ formMesto.addEventListener('submit', submitFormMesto);
 
 
 // добавляем в разметку карточки
-
-
-
-
-
-
-
-
-
-
-
 
 const elements = document.querySelector('.elements');
 const elementTemplate = document.querySelector('#element-template').content;
@@ -203,12 +171,6 @@ function createCard(data) {
     const cardElement = elementTemplate.querySelector('.element').cloneNode(true);
 
     cardElement.querySelector('.element__image').src = data.link; //data-информация из массива
-    // cardElement.querySelector('.element__image').addEventListener('click', function(event) {
-    //     // showPopupImage;
-    //     event.preventDefault();
-    //     event.target.classList.add('popup_opened');
-    //     console.log(event); //открывем большую картинку
-    // });
     cardElement.querySelector('.element__image').addEventListener('click', (e) => showPopupImage(data));
     cardElement.querySelector('.element__image').alt = 'Название карртинки';
     cardElement.querySelector('.element__text').textContent = data.name; //data-информация из массива
@@ -217,7 +179,6 @@ function createCard(data) {
     });
 
     cardElement.querySelector('.element__button-delete').addEventListener('click', function(event) {
-        // console.log(event);
         event.target.closest('.element').remove(); //удаление карточки без присвоения переменной
     });
 
@@ -255,14 +216,5 @@ butoonClosePopupImage.addEventListener('click', closePopupImage);
 
 //функция по закрытию 3 попапа
 function closePopupImage() {
-    // console.log(1);
-    // popupImage.classList.remove('popup_opened');
     closePopup(popupImage);
 }
-// document.addEventListener('keydown', function(e) {
-//     if (e.key === 'Escape')
-//         closePopup(popupImage)
-// });
-
-
-//валидация форм
