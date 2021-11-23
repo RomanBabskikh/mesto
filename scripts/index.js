@@ -12,6 +12,8 @@ const nameField = document.querySelector('.popup__input_type_name');
 const infoField = document.querySelector('.popup__input_type_info');
 const ESC_CODE = 'Escape';
 const modalPopups = document.querySelectorAll('.popup');
+const formEditCard = document.querySelector('.popup__form_type_name');
+const formAddCard = document.querySelector('.popup__form_type_mesto');
 const initialCards = [{
         name: 'Байкал',
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
@@ -40,6 +42,15 @@ const initialCards = [{
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
     }
 ];
+
+const config = {
+    formSelector: '.popup__form',
+    inputSelector: '.popup__input',
+    submitButtonSelector: '.popup__button',
+    inactiveButtonClass: 'popup__button_disabled',
+    inputErrorClass: 'popup__error',
+    errorClass: 'popup__error_activity'
+}
 
 
 
@@ -146,8 +157,9 @@ popupMestoCloseButton.addEventListener('click', closePopupMesto);
 
 function submitFormMesto(event) {
     event.preventDefault();
-    drawCard({ name: mestoField.value, link: urlField.value });
+    generateCard({ name: mestoField.value, link: urlField.value });
     event.target.reset();
+
 
     closePopup(popupMesto); //работает
 }
@@ -155,7 +167,13 @@ formMesto.addEventListener('submit', submitFormMesto);
 
 
 
+// создаем экземпляр класса форм
+const addFormValidator = new FormValidator(config, formAddCard);
+const editFormValidator = new FormValidator(config, formEditCard);
 
+// функции проверки форм
+addFormValidator.enableValidation();
+editFormValidator.enableValidation();
 // добавляем в разметку карточки
 
 const elements = document.querySelector('.elements');
@@ -194,7 +212,7 @@ const elementTemplate = document.querySelector('#element-template').content;
 initialCards.forEach(function(data) { //отрисовываем карточки(перебиранием массива)
     const card = new Card(data, '#element-template', '.popup_type_image');
     elements.prepend(card.generateCard());
-    //drawCard(data);
+    // drawCard(data);
 });
 
 
