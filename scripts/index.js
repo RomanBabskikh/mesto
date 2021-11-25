@@ -157,10 +157,10 @@ popupMestoCloseButton.addEventListener('click', closePopupMesto);
 
 function submitFormMesto(event) {
     event.preventDefault();
-    generateCard({ name: mestoField.value, link: urlField.value });
+    // generateCard({ name: mestoField.value, link: urlField.value });
+    const card = new Card({ name: mestoField.value, link: urlField.value }, '#element-template', '.popup_type_image');
+    elements.prepend(card.generateCard());
     event.target.reset();
-
-
     closePopup(popupMesto); //работает
 }
 formMesto.addEventListener('submit', submitFormMesto);
@@ -212,8 +212,10 @@ const elementTemplate = document.querySelector('#element-template').content;
 initialCards.forEach(function(data) { //отрисовываем карточки(перебиранием массива)
     const card = new Card(data, '#element-template', '.popup_type_image');
     elements.prepend(card.generateCard());
+
     // drawCard(data);
 });
+
 
 
 
