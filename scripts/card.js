@@ -1,5 +1,3 @@
-import { openPopup } from './index.js'
-
 export class Card {
     constructor(data, cardSelector, popupImageSelector, openPopupFn) {
         this._image = data.link;
@@ -24,7 +22,7 @@ export class Card {
         bigPopupImage.src = this._image;
         bigPopupImage.alt = this._text;
         popupImageText.textContent = this._text;
-        openPopup(this._popupImageElement)
+        this._openPopupFn(this._popupImageElement)
 
     }
     _toggleLike(e) {
