@@ -2,6 +2,8 @@ export class FormValidator {
     constructor(config, formElement) {
         this._config = config;
         this._formElement = formElement;
+        this._inputList = [...this._formElement.querySelectorAll(this._config.inputSelector)];
+        this._buttonElement = this._formElement.querySelector(this._config.submitButtonSelector);
     }
 
     // Функция проверяет валидность поля
@@ -30,15 +32,15 @@ export class FormValidator {
 
     // функция проверяет кнопку
     _toggleButtonState() {
-        const buttonElement = this._formElement.querySelector(this._config.submitButtonSelector);
-        buttonElement.disabled = !this._formElement.checkValidity();
-        buttonElement.classList.toggle(this._config.inactiveButtonClass, !this._formElement.checkValidity());
+
+        this._buttonElement.disabled = !this._formElement.checkValidity();
+        this._buttonElement.classList.toggle(this._config.inactiveButtonClass, !this._formElement.checkValidity());
     }
 
     // функция обработчик для всех полей формы
     _setFormListeners() {
-        const inputList = [...this._formElement.querySelectorAll(this._config.inputSelector)];
-        inputList.forEach(inputElement => {
+
+        this._inputList.forEach(inputElement => {
             inputElement.addEventListener('input', () => {
                 this._handleFieldValidation(inputElement);
                 this._toggleButtonState();
