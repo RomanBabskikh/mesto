@@ -1,5 +1,9 @@
 import { Card } from './card.js';
 import { FormValidator } from './FormValidator.js';
+import { Section } from './section.js';
+import { UserInfo } from './userinfo.js';
+import { PopupWithImage } from './PopupWithImage.js';
+import { PopupWithForm } from './PopupWithForm.js';
 
 /** ПРоектная работа 4 */
 const popupProfile = document.querySelector('.popup_type_profile');
@@ -83,21 +87,35 @@ export function closePopup(popup) {
 
 
 //функция по открытию попапа/ редактирования/
-function showPopupProfile() {
-    openPopup(popupProfile);
-    nameField.value = title.textContent;
-    infoField.value = subTitle.textContent;
-}
-editButton.addEventListener('click', showPopupProfile);
+// function showPopupProfile() {
+//     openPopup(popupProfile);
+//     nameField.value = title.textContent;
+//     infoField.value = subTitle.textContent;
+// }
+const profileFormNameSelector = 'input-name';
+const profileFormInfoSelector = 'input-info';
+let userInfo = new UserInfo({ nameSelector: '.profile__name', descriptionSelector: '.profile__description' });
+const popupFormProfile = new PopupWithForm('.popup_type_profile', (e, formData) => {
+    e.preventDefault();
+    userInfo.setUserInfo(formData[profileFormNameSelector], formData[profileFormInfoSelector]);
+    popupFormProfile.close()
+});
+popupFormProfile._setEventListeners();
+editButton.addEventListener('click', (e) => {
+    const info = userInfo.getUserInfo();
+    nameField.value = info.title;
+    infoField.value = info.subTitle;
+    popupFormProfile.open()
+});
 
 
 
 
 //функция по закрытию попапа редактирования//
-function closePopupProfile() {
-    closePopup(popupProfile);
-}
-popupProfileCloseButton.addEventListener('click', closePopupProfile);
+// function closePopupProfile() {
+//     closePopup(popupProfile);
+// }
+// popupProfileCloseButton.addEventListener('click', closePopupProfile);
 
 
 
@@ -113,14 +131,14 @@ modalPopups.forEach((popup) => {
 
 
 //функция по форме//
-function submitFormEdit(event) {
-    event.preventDefault();
-    title.textContent = nameField.value;
-    subTitle.textContent = infoField.value;
-    closePopup(popupProfile);
-}
+// function submitFormEdit(event) {
+//     event.preventDefault();
+//     title.textContent = nameField.value;
+//     subTitle.textContent = infoField.value;
+//     closePopup(popupProfile);
+// }
 
-profileForm.addEventListener('submit', submitFormEdit)
+// profileForm.addEventListener('submit', submitFormEdit)
 
 /** Конец */
 
@@ -178,17 +196,20 @@ editFormValidator.enableValidation();
 const elements = document.querySelector('.elements');
 const elementTemplate = document.querySelector('#element-template').content;
 
-
+const popupWithImage = new PopupWithImage('.popup_type_image');
 
 function createCard(data) {
-    const card = new Card(data, '#element-template', '.popup_type_image', openPopup);
+    const card = new Card(data, '#element-template', popupWithImage.open);
     return card.generateCard();
 }
+popupWithImage._setEventListeners();
+
+const section = new Section({ items: initialCards, renderer: createCard }, '.elements');
+section.drawElements();
+
+// initialCards.forEach(function(data) { //отрисовываем карточки(перебиранием массива)
+//     const card = createCard(data);
+//     elements.prepend(card);
 
 
-initialCards.forEach(function(data) { //отрисовываем карточки(перебиранием массива)
-    const card = createCard(data);
-    elements.prepend(card);
-
-
-});
+// });
