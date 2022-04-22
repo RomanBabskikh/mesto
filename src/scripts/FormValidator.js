@@ -46,9 +46,6 @@ export class FormValidator {
                 this._toggleButtonState();
             });
         });
-        this._formElement.addEventListener('submit', (evt) => {
-            evt.preventDefault();
-        });
     }
 
     // функция обработчик для всех форм

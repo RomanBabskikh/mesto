@@ -16,15 +16,6 @@ export class Card {
         return cardElement; //возврашаем карточку
     }
 
-    // _showPopuCardImage() {
-    //     const bigPopupImage = this._popupImageElement.querySelector('.popup__image');
-    //     const popupImageText = this._popupImageElement.querySelector('.popup__image-text');
-    //     bigPopupImage.src = this._image;
-    //     bigPopupImage.alt = this._text;
-    //     popupImageText.textContent = this._text;
-    //     this._openPopupFn(this._popupImageElement)
-
-    // }
     _toggleLike(e) {
         e.target.classList.toggle('element__button-like_active');
     }
@@ -34,9 +25,10 @@ export class Card {
     }
     generateCard() { // метод который вставит данные в разметку и подготовит карточку к публикации
         this._element = this._getTemplate();
-        this._element.querySelector('.element__image').src = this._image //data-информация из массива
-        this._element.querySelector('.element__image').addEventListener('click', this._handleCardClick);
-        this._element.querySelector('.element__image').alt = 'Название карртинки';
+        const elementImage = this._element.querySelector('.element__image');
+        elementImage.src = this._image //data-информация из массива
+        elementImage.addEventListener('click', this._handleCardClick);
+        elementImage.alt = 'Название карртинки';
         this._element.querySelector('.element__text').textContent = this._text; //data-информация из массива
         this._element.querySelector('.element__button-like').addEventListener('click', this._toggleLike); //добавление лайка без присвоения переменной
         this._element.querySelector('.element__button-delete').addEventListener('click', (e) => this._deleteCard(this._element)); //удаление карточки без присвоения переменной
