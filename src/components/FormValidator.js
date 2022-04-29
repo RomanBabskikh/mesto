@@ -31,7 +31,7 @@ export class FormValidator {
     };
 
     // функция проверяет кнопку
-    _toggleButtonState() {
+    toggleButtonState() {
 
         this._buttonElement.disabled = !this._formElement.checkValidity();
         this._buttonElement.classList.toggle(this._config.inactiveButtonClass, !this._formElement.checkValidity());
@@ -43,7 +43,7 @@ export class FormValidator {
         this._inputList.forEach(inputElement => {
             inputElement.addEventListener('input', () => {
                 this._handleFieldValidation(inputElement);
-                this._toggleButtonState();
+                this.toggleButtonState();
             });
         });
     }

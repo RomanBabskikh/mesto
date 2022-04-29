@@ -28,7 +28,7 @@ export class Card {
         const elementImage = this._element.querySelector('.element__image');
         elementImage.src = this._image //data-информация из массива
         elementImage.addEventListener('click', this._handleCardClick);
-        elementImage.alt = 'Название карртинки';
+        elementImage.alt = this._text;
         this._element.querySelector('.element__text').textContent = this._text; //data-информация из массива
         this._element.querySelector('.element__button-like').addEventListener('click', this._toggleLike); //добавление лайка без присвоения переменной
         this._element.querySelector('.element__button-delete').addEventListener('click', (e) => this._deleteCard(this._element)); //удаление карточки без присвоения переменной
