@@ -57,7 +57,7 @@ addMestoButton.addEventListener('click', (e) => {
     const submitButton = formAddCard.querySelector('.popup__button');
     submitButton.disabled = true;
     submitButton.classList.add('popup__button_disabled');
-    //addFormValidator.toggleButtonState()
+    addFormValidator.toggleButtonState()
     popupFormMesto.open()
 });
 
