@@ -54,9 +54,6 @@ const popupFormMesto = new PopupWithForm('.popup_type_mesto', (e, formData) => {
 popupFormMesto.setEventListeners();
 const addMestoButton = document.querySelector('.profile__add-button');
 addMestoButton.addEventListener('click', (e) => {
-    // const submitButton = formAddCard.querySelector('.popup__button');
-    // submitButton.disabled = true;
-    // submitButton.classList.add('popup__button_disabled');
     addFormValidator.toggleButtonState()
     popupFormMesto.open()
 });
